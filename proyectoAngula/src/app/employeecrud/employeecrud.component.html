@@ -1,0 +1,58 @@
+<div class="container mt-4">
+
+    <div class="card">
+        <h1>Employee Registation</h1>
+
+        <form>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class="form-control" id="name" placeholder="Enter Name">
+            </div>
+
+            <div class="form-group">
+                <label>address</label>
+                <input type="text" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" class="form-control" id="address" placeholder="Enter address">
+            </div>
+
+            <div class="form-group">
+                <label>Mobile</label>
+                <input type="text" [(ngModel)]="mobile" [ngModelOptions]="{standalone: true}" class="form-control" id="mobile" placeholder="Enter Mobile">
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4" (click)="save()">Enviar</button>
+        </form>
+    </div>
+
+    <div>
+        <div class="container mt-4">
+            <h1>Employee Table</h1>
+
+            <table class="table">
+                <thead>
+                    <h1 *ngIf="!isResultLoaded">Loading.................</h1>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let EmployeeItem of EmployeeArray">
+
+                        <th scope="row">{{EmployeeItem.id }}</th>
+                        <td>{{EmployeeItem.name | uppercase}}</td>
+                        <td>{{EmployeeItem.address }}</td>
+                        <td>{{EmployeeItem.mobile }}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" (click)="setUpdate(EmployeeItem)">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="setDelete(EmployeeItem)">Delete</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
